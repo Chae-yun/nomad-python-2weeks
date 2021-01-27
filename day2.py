@@ -5,22 +5,17 @@ Sometimes you have to use 'return' and sometimes you dont.
 Start by creating the functions
 """
 
-
 def is_on_list(list, item):
 	return item in list
-
 
 def get_x(list, x):
 	return list[x]
 
-
 def add_x(list, x):
 	list.append(x)
 
-
 def remove_x(list, x):
 	list.remove(x)
-
 
 # \/\/\/\/\/\/\  DO NOT TOUCH AREA  \/\/\/\/\/\/\ #
 
