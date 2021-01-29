@@ -39,10 +39,10 @@ for index, country in enumerate(countries):
 while(True):
   try:
     answer = int(input("#: "))
-    if answer >= len(countries):
-      print("Choose a number from the list.")
-    else:
+    if answer in range(len(countries)):
       break
+    else:
+      print("Choose a number from the list.")
   except:
     print("That wasn't a number.")
 
