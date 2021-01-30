@@ -4,7 +4,7 @@ from bs4 import BeautifulSoup
 LIMIT = 50
 URL = f"https://www.indeed.com/jobs?q=qython&limit={LIMIT}"
 
-def extract_pages():
+def get_last_page():
   # 사이트 개편으로 인해 뒤에 더 존재해도 5페이지까지밖에 얻어오지 못함.
   # Because of renewing of site, it gets until 5 pages even it has more.
   r = requests.get(URL)
@@ -47,6 +47,6 @@ def extract_jobs(last_page):
   return jobs
 
 def get_indeed_jobs():
-  last_page = extract_pages()
+  last_page = get_last_page()
   jobs = extract_jobs(last_page)
   return jobs
