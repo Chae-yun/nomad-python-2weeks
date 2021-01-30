@@ -1,1 +1,1 @@
-# nomad-python-2weeks
+# python-2weeks
