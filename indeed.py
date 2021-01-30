@@ -4,7 +4,7 @@ from bs4 import BeautifulSoup
 LIMIT = 50
 URL = f"https://www.indeed.com/jobs?q=qython&limit={LIMIT}"
 
-def extract_indeed_pages():
+def extract_pages():
   # 사이트 개편으로 인해 뒤에 더 존재해도 5페이지까지밖에 얻어오지 못함.
   # Because of renewing of site, it gets until 5 pages even it has more.
   r = requests.get(URL)
@@ -17,7 +17,7 @@ def extract_indeed_pages():
   last_page = pages[-1]
   return last_page
 
-def extract_indeed_job(html):
+def extract_job(html):
   title = html.find("h2", {"class": "title"}).find("a")["title"]
   company = html.find("span", {"class": "company"})
   company_anchor = company.find("a")
@@ -34,7 +34,7 @@ def extract_indeed_job(html):
     "link": f"{URL}&vjk={job_id}"
   }
 
-def extract_indeed_jobs(last_page):
+def extract_jobs(last_page):
   jobs = []
   for page in range(last_page):
     print(f"Scrapping page {page}")
@@ -42,6 +42,11 @@ def extract_indeed_jobs(last_page):
     soup = BeautifulSoup(r.text, "html.parser")
     results = soup.find_all("div", {"class": "jobsearch-SerpJobCard"})
     for result in results:
-      job = extract_indeed_job(result)
+      job = extract_job(result)
       jobs.append(job)
+  return jobs
+
+def get_indeed_jobs():
+  last_page = extract_pages()
+  jobs = extract_jobs(last_page)
   return jobs
