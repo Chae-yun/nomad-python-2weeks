@@ -2,18 +2,6 @@ import os
 import requests
 from bs4 import BeautifulSoup
 
-def input_code(data_count):
-  answer = input("#: ")
-  try:
-    answer = int(answer)
-    if answer >= data_count:
-      print("Choose a number from the list.")
-      input_code(data_count)
-    return answer
-  except:
-    print("That wasn't a number.")
-    input_code(data_count)
-
 os.system("clear")
 url = "https://www.iban.com/currency-codes"
 
