@@ -1,7 +1,8 @@
 from indeed import get_indeed_jobs
 from stackoverflow import get_so_jobs
+from save import save_to_file
 
-# indeed_jobs = get_indeed_jobs()
-# print(indeed_jobs)
+indeed_jobs = get_indeed_jobs()
+save_to_file(indeed_jobs)
 
-so_jobs = get_so_jobs()
+# so_jobs = get_so_jobs()
